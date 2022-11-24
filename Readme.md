@@ -13,7 +13,7 @@ Or can you?
 
 ## Vulnerability
 
-The application is vulnerable to SQLI on the note update endpoint. To make it a little harder:  
+The application is vulnerable to blind SQLI on the note update endpoint `/api/note/update`. To make it a little harder:  
 - sqlmap user-agent isn't allowed
 - default sqlmap exploit will override the flag
 
