@@ -50,18 +50,12 @@ export default class NoteController {
 
   private async getAllNotes(req: Request, res: Response) {
     try {
-      let filter = {};
-      // @ts-ignore;
-      if (req.session.user.role !== UserRole.ADMIN) {
-        filter = {
-          where: {
-            // @ts-ignore
-            userId: req.session.user.id,
-          },
-        };
-      }
-
-      const notes = await Note.findAll(filter);
+      const notes = await Note.findAll({
+        where: {
+          // @ts-ignore
+          userId: req.session.user.id,
+        },
+      });
 
       res.json(notes.map((note) => note.toJSON()));
     } catch {
